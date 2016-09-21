@@ -4,14 +4,14 @@
 
 
     <?php
-	  $periodismo_obj = get_category_by_slug( 'periodismo' );
+	  $design_obj = get_category_by_slug( 'design' );
 	  $insite_obj = get_category_by_slug( 'in-site' );
-	  $blogger_obj = get_category_by_slug( 'blogger' );
+	  $places_obj = get_category_by_slug( 'places' );
 	  ?>
     <ul class="submenu">
-      <li><a href="<?php echo get_category_link( $periodismo_obj->term_id ); ?>" class="active" data-category='<?php echo $periodismo_obj->slug ?>'>Design</a></li>
+      <li><a href="<?php echo get_category_link( $design_obj->term_id ); ?>" class="active" data-category='<?php echo $design_obj->slug ?>'>Design</a></li>
       <li><a href="<?php echo get_category_link( $insite_obj->term_id ); ?>" data-category='<?php echo $insite_obj->slug ?>'>In-Site</a></li>
-      <li><a href="<?php echo get_category_link( $blogger_obj->term_id ); ?>" data-category='<?php echo $blogger_obj->slug ?>'>Places</a></li>
+      <li><a href="<?php echo get_category_link( $places_obj->term_id ); ?>" data-category='<?php echo $places_obj->slug ?>'>Places</a></li>
     </ul>
   </li>
 

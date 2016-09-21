@@ -27,9 +27,10 @@
 				  $category_name = 'in-site';
 				  $category_obj = get_category_by_slug( $category_name );
 		          $args = array(
-					'posts_per_page'	=> 4,
+					'post_status' => 'publish',
+					'post_type' => array('post'),
+					'posts_per_page'	=> 5,
 					'post__not_in'		=> $featured_posts,
-					'post_type'			=> 'noticias'
 				  );
 				  $insite_query = new WP_Query($args);
 
@@ -96,7 +97,7 @@
               	<?php
               	$blog_query = new WP_Query(array(
               		'post_status'		=>	'publish',
-              		'posts_per_page'	=>	6,
+              		'posts_per_page'	=>	3,
               		'post_type'			=>	'noticias'
               	));
 

@@ -15,7 +15,9 @@
 
           <div class="col_left">
 
-            
+            <script>
+              latest_category = 'design';
+            </script>
             <?php get_template_part('content', 'filters_menu'); ?>
 
 

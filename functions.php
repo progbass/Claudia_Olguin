@@ -1,60 +1,6 @@
 <?php
 
 
-/*
-
-
-add_action('restrict_manage_posts', 'node_admin_posts_filter_restrict_manage_posts');
-
-
-add_filter('pre_get_posts', 'node_admin_posts_filter');
-function node_admin_posts_filter($q){
-	
-
-    if (is_admin() && isset($_GET['fecha_filter']) && $_GET['fecha_filter'] != '') :
-
-        $selected_date = new DateTime($_GET['fecha_filter']);
-        $q->set( 'year', $selected_date->format("Y") );
-        $q->set( 'monthnum', $selected_date->format("M") );
-        $q->set( 'day', $selected_date->format("d") );
-
-        return $q;
-
-    endif;
-
-}
-
-function node_admin_posts_filter_restrict_manage_posts()
-{
-
-    global $wpdb;
-
-    $get_posts = $wpdb->get_results("SELECT *, DATE_FORMAT($wpdb->posts.post_date,'%Y-%m-%d') AS niceDate FROM $wpdb->posts GROUP BY DATE_FORMAT($wpdb->posts.post_date, '%Y-%m-%d') ORDER BY $wpdb->posts.post_date DESC");
-
-    echo '<select name="fecha_filter">';
-
-    echo '<option value="">Filtrado por día</option>';
-
-    $current = isset($_GET['fecha_filter']) ? $_GET['fecha_filter'] : '';
-
-    foreach ($get_posts as $get_post) :
-
-        $select = null;
-
-        if ($current == $get_post->niceDate) {
-            $select = ' selected="selected"';
-        }
-
-        echo '<option value="' . $get_post->niceDate . '" ' . $select . '>' . $get_post->niceDate . '</option>';
-
-    endforeach;
-
-    echo '</select>';
-}
-
-*/
-
-
 
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
@@ -202,12 +148,18 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 function ajaxSortedContent() {
 
 	// Custom Query
-	$sorted_posts = new WP_Query( array(
+	$options = array(
 		'order' => 'DESC',
 		'post_status' => 'publish',
 		'post_type' => array('post'),
-		'category_name' => $_POST['category']
-	));
+		'posts_per_page'	=> 5
+	);
+
+	if($_POST['category']){
+		$options['category_name'] = $_POST['category'];
+	}
+	//print_r($options);
+	$sorted_posts = new WP_Query($options );
 
 
 	// Init Object Stream

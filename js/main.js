@@ -149,6 +149,11 @@ jQuery(function($){
 	/////////////////////////////////////////////////////////////
 	// PAGINATION & LATEST / MOS VIEWS AJAX TABS
 	/////////////////////////////////////////////////////////////
+	var post_cat = '';
+	if(latest_category != ''){
+		post_cat = latest_category;
+	}
+	
 	/// TABS FILTERS
 	$(".latest_holder ul.filters a.tab").click(function(){
 		// BUTTON STYLE
@@ -231,7 +236,7 @@ jQuery(function($){
 	}
 
 	// AJAX CALL
-	loadFilteredContent('periodismo', $(".latest_holder ul#latest"));
+	loadFilteredContent(post_cat, $(".latest_holder ul#latest"));
 
 
 

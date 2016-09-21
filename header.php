@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><?php wp_title( '|', true, 'right' ) ?></title>
-	<meta name="author" content="">
-	<link rel="author" href="">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+  	<meta name="author" content="">
+  	<link rel="author" href="">
+  	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-	<?php wp_head() ?> 
+  	<?php wp_head() ?> 
   </head>
 
 
@@ -26,7 +26,7 @@
       
       <ul class="social">
         <li><a href="https://twitter.com/claudiaolguinmx" class="twitter social">Twitter</a></li>
-        <li class="active"><a href="#" class="linkedin social">Linkedin</a></li>
+        <li class="active"><a href="https://mx.linkedin.com/in/claudia-olguín-8b972016/en" class="linkedin social">Linkedin</a></li>
         <li><a href="<?php bloginfo('url')?>/contacto">Contacto</a></li>
       </ul>
 

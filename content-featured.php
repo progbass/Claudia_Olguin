@@ -9,9 +9,9 @@
 
   // Almacenamos las categorías en un array para controlar el orden en el que se mostrarán en el front end
   // dependiendo de la página en la que nos encontremos
-  $content_order = array('in-site', 'periodismo', 'blogger');
+  $content_order = array('in-site', 'design', 'places');
   //if( is_page('periodismo') )
-    //$content_order = array('in-site', 'periodismo', 'blogger');
+    //$content_order = array('in-site', 'design', 'places');
 ?>
 
 
@@ -71,13 +71,13 @@
 
 
     //////////////////////////////////////////////////
-    /// PERIODISMO / DESIGN
+    /// DESIGN
     //////////////////////////////////////////////////  
-    } else if($content_order[$i] == 'periodismo'){
+    } else if($content_order[$i] == 'design'){
 
 
 
-      $category_name = 'periodismo';
+      $category_name = 'design';
       $category_obj = get_category_by_slug( $category_name );
       $args = array(
       'posts_per_page' => 1,
@@ -120,11 +120,11 @@
 
 
     //////////////////////////////////////////////////
-    /// PLACES / BLOGGER
+    /// PLACES
     //////////////////////////////////////////////////  
-    } else if($content_order[$i] == 'blogger'){ 
+    } else if($content_order[$i] == 'places'){ 
 
-      $category_name = 'blogger';
+      $category_name = 'places';
       $category_obj = get_category_by_slug( $category_name );
       $args = array(
       'posts_per_page' => 1,
