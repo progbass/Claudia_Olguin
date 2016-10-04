@@ -32,7 +32,7 @@ jQuery(function($){
 	/// IS ELEMENT WHITIN THE VISIBLE WINDOW AREA?
 	////////////////////////////////////////////////////////
 	function formatThumbnails(){
-		$('.image_holder').each(function(_index, _target){
+		jQuery('.image_holder').each(function(_index, _target){
 			var target = $(this);
 			var holder_ratio = target.width() / target.height();
 
