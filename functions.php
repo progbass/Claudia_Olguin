@@ -1,6 +1,6 @@
 <?php
 
-
+define(POSTS_PER_PAGE, 35); // Number of posts to show through ajax calls
 
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
@@ -152,7 +152,7 @@ function ajaxSortedContent() {
 		'order' => 'DESC',
 		'post_status' => 'publish',
 		'post_type' => array('post'),
-		'posts_per_page'	=> 5
+		'posts_per_page'	=> POSTS_PER_PAGE
 	);
 
 	if($_POST['category']){

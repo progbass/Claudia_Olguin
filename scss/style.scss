@@ -13,8 +13,8 @@ Version: 0.1
   Imports
 /* ========================================================================== */
 @import 'reset', 'variables';
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "../../bower_components/fancyBox/source/jquery.fancybox";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../bower_components/fancyBox/source/jquery.fancybox";
 @import "helpers", "mixins";
 
 
@@ -118,6 +118,8 @@ form{
     a{
       display: block;
       width: 100%; height: 100%;
+      position: absolute;
+      top: 0; left: 0;
     }
 
 

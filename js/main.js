@@ -1,20 +1,15 @@
-/*require.config({
-	"baseUrl": "<%= conf.get('contentDir') %>/themes/<%= conf.get('themeDir') %>/js",
-	"paths": {
-		"jquery": "vendor/jquery/jquery"
+
+
+!function($){
+	
+	// BROCKERS
+	var brockers_list = $('#brockers ul.graph');
+	if( brockers_list.children().length ){
+		brockers_list.find('.percentage_holder').each( function(_index, _target){
+			var target = $(_target);
+			target.find('span').css('width', target.attr('data-percentage') + "%");
+		} );
 	}
-});
-
-require(['jquery'], function($) {
-	console.log('Working!!');
-});
-*/
-
-
-
-jQuery(function($){
-
-
 	// BROCKERS
 	var brockers_list = $('#brockers ul.graph');
 	if( brockers_list.children().length ){
@@ -25,25 +20,20 @@ jQuery(function($){
 	}
 
 
-
 	
 
 	////////////////////////////////////////////////////////
 	/// IS ELEMENT WHITIN THE VISIBLE WINDOW AREA?
 	////////////////////////////////////////////////////////
 	function formatThumbnails(){
-		jQuery('.image_holder').each(function(_index, _target){
+		$('.image_holder').each(function(_index, _target){
 			var target = $(this);
 			var holder_ratio = target.width() / target.height();
 
 			var image = target.find('img');
-			//image.load(function(){
-				//console.log($(this))
-				var image_ratio = image.width()/image.height(); 
-				var image_class = image_ratio <= holder_ratio ? 'horizontal' : 'vertical';
-				image.removeClass('vertical horizontal').addClass(image_class);
-			//});
-			
+			var image_ratio = image.width()/image.height(); 
+			var image_class = image_ratio <= holder_ratio ? 'horizontal' : 'vertical';
+			image.removeClass('vertical horizontal').addClass(image_class);
 		});
 	}
 	formatThumbnails();
@@ -53,10 +43,11 @@ jQuery(function($){
 	////////////////////////////////////////////////////////
 	/// WINDOW ON RESIZE
 	////////////////////////////////////////////////////////
-	$(window).resize(onResize);
 	function onResize(){
 		formatThumbnails();
 	}
+	window.onload = formatThumbnails;
+	$(window).resize(onResize);
 
 
 
@@ -150,9 +141,13 @@ jQuery(function($){
 	// PAGINATION & LATEST / MOS VIEWS AJAX TABS
 	/////////////////////////////////////////////////////////////
 	var post_cat = '';
+	var latest_category = null;
 	if(latest_category != ''){
 		post_cat = latest_category;
 	}
+
+
+
 	
 	/// TABS FILTERS
 	$(".latest_holder ul.filters a.tab").click(function(){
@@ -254,44 +249,44 @@ jQuery(function($){
 
 
 
-});
+	/////////////////////////////////////////////////////////////
+	// SOCIAL SHARE
+	/////////////////////////////////////////////////////////////
+	function socialShare(id, urlpost, titles){
+		//properties
+		var source = urlpost;
+		var url="";
+		
+		
+		//Choose Social Network
+		switch(id){
+			case 'facebook':
+				url = 'https://www.facebook.com/sharer/sharer.php?u=' + source;
+				break;
+				
+			case 'twitter':
+				title = encodeURIComponent(titles);
+				url = 'https://twitter.com/intent/tweet?text='+title+'&url='+source;
+				break;
+				
+			default:
+				break;
+		}
+		
+		
+		//Pop up settings
+		var w = 500;
+		var h = 250;
+		var left = (screen.width/2)-(w/2);
+		var top = (screen.height/2)-(h/2);
+		
+		//open popup
+		myWindow = window.open (url, 'win_share','width='+w+',height='+h+', top='+top+', left='+left);
 
-
-
-/////////////////////////////////////////////////////////////
-// SOCIAL SHARE
-/////////////////////////////////////////////////////////////
-function socialShare(id, urlpost, titles){
-	//properties
-	var source = urlpost;
-	var url="";
-	
-	
-	//Choose Social Network
-	switch(id){
-		case 'facebook':
-			url = 'https://www.facebook.com/sharer/sharer.php?u=' + source;
-			break;
-			
-		case 'twitter':
-			title = encodeURIComponent(titles);
-			url = 'https://twitter.com/intent/tweet?text='+title+'&url='+source;
-			break;
-			
-		default:
-			break;
+		//
+		return false;
 	}
-	
-	
-	//Pop up settings
-	var w = 500;
-	var h = 250;
-	var left = (screen.width/2)-(w/2);
-	var top = (screen.height/2)-(h/2);
-	
-	//open popup
-	myWindow = window.open (url, 'win_share','width='+w+',height='+h+', top='+top+', left='+left);
 
-	//
-	return false;
-};
+}(jQuery);
+
+
